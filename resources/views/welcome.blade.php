@@ -46,11 +46,12 @@
                                 <br>
                             </div>
                             <ul class="social-link">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                @if($data->facebook != "")
+                                    <li><a href="{{ $data->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                @endif
+                                @if($data->instagram != "")
+                                    <li><a href="{{ $data->instagram }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -67,21 +68,27 @@
                     </a>
                 </div>
                 <div class="single-info-box">
-                    <div class="single-info">
-                        <div class="icon-box"><i class="flaticon-clock-1"></i></div>
-                        <div class="title">Horário de Atendimento</div>
-                        <div class="text">Allday 9.00 - 18.00</div>
-                    </div>
-                    <div class="single-info">
-                        <div class="icon-box"><i class="flaticon-envelope"></i></div>
-                        <div class="title">Email</div>
-                        <div class="text"><a href="mailto:info@example.com" style="color:#b48484;">info@example.com</a></div>
-                    </div>
-                    <div class="single-info">
-                        <div class="icon-box"><i class='fa flaticon-technology'></i></div>
-                        <div class="title">WhatsApp</div>
-                        <div class="text-phone">+251-235-3256</div>
-                    </div>
+                    @if($data->opening_hours != "")
+                        <div class="single-info">
+                            <div class="icon-box"><i class="flaticon-clock-1"></i></div>
+                            <div class="title">Horário de Atendimento</div>
+                            <div class="text">{{ $data->opening_hours }}</div>
+                        </div>
+                    @endif
+                    @if($data->email != "")
+                        <div class="single-info">
+                            <div class="icon-box"><i class="flaticon-envelope"></i></div>
+                            <div class="title">Email</div>
+                            <div class="text"><a href="{{ $data->email }}" style="color:#b48484;">{{ $data->email }}</a></div>
+                        </div>
+                    @endif
+                    @if($data->whatsapp != "")
+                        <div class="single-info">
+                            <div class="icon-box"><i class='fa flaticon-technology'></i></div>
+                            <div class="title">WhatsApp</div>
+                            <div class="text-phone">{{ $data->whatsapp }}</div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

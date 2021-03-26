@@ -18,6 +18,7 @@
                     <div class="panel-body">
                         <form action="{{ route('company.data.update') }}" method="POST"
                               style="border-radius: 0px;" class="form-horizontal group-border-dashed" enctype="multipart/form-data">
+                            @csrf
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Logotipo</label>
@@ -35,14 +36,14 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Horário de Funcionamento</label>
                                 <div class="col-sm-7">
-                                    <textarea id="opening_hours" name="opening_hours">{{ $data->opening_hours }}</textarea>
+                                    <textarea id="opening_hours" name="opening_hours" class="form-control">{{ $data->opening_hours }}</textarea>
                                 </div>
                             </div><br/><br/><br/>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Endereço</label>
                                 <div class="col-sm-7">
-                                    <textarea id="address" name="address">{{ $data->address or '' }}</textarea>
+                                    <textarea id="address" name="address" placeholder="Digite aqui o endereço da sua empresa" class="form-control">{{ $data->address }}</textarea>
                                 </div>
                             </div><br/><br/><br/>
 

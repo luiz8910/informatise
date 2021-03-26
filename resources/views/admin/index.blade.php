@@ -116,9 +116,9 @@
                             </li>
 
                             <li class="">
-                                <a href="#">
-                                    <img src="/images/cog.png" class="custom-icon" />
-                                    <span>Configurações</span>
+                                <a href="{{ route('company.data') }}">
+                                    <i class="icon mdi mdi-info"></i>
+                                    <span>Informações da Empresa</span>
                                 </a>
                             </li>
                             <li class="parent"><a href="charts.html"><i class="icon mdi mdi-chart-donut"></i><span>Charts</span></a>
