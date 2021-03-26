@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="http://itapesegdistribuidora.com.br/images/logo.png">
-    <title>Itapeseg</title>
+    <link rel="shortcut icon" href="images/logo_site.png">
+    <title>{{ env('APP_NAME') }}</title>
     <link rel="stylesheet" type="text/css" href="../../assets/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
     <link rel="stylesheet" type="text/css"
           href="../../assets/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
@@ -20,7 +20,7 @@
             <div class="splash-container forgot-password">
                 <div class="panel panel-default panel-border-color panel-border-color-primary">
                     <div class="panel-heading">
-                        <img src="http://itapesegdistribuidora.com.br/images/logo.png" alt="logo" width="110" height="42" class="logo-img">
+                        <img src="images/logo_site.png" alt="logo" width="110" height="100" class="logo-img">
                         <span class="splash-description">Esqueceu sua senha?</span>
                     </div>
                     <div class="panel-body">

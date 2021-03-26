@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\PersonRepository;
+use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 use App\Traits\Login;
 use Illuminate\Http\Request;
@@ -20,12 +21,17 @@ class PersonController extends Controller{
      * @var UserRepository
      */
     private $users;
+    /**
+     * @var RoleRepository
+     */
+    private $roles;
 
-    public function __construct(PersonRepository $repository, UserRepository $users)
+    public function __construct(PersonRepository $repository, UserRepository $users, RoleRepository $roles)
     {
 
         $this->repository = $repository;
         $this->users = $users;
+        $this->roles = $roles;
     }
 
     public function index()
@@ -36,7 +42,9 @@ class PersonController extends Controller{
 
         $scripts[] = '../../js/person.js';
 
-        return view('index', compact('people', 'route', 'scripts'));
+        $model = 'criar_usuario';
+
+        return view('admin.index', compact('people', 'route', 'scripts', 'model'));
     }
 
     public function create()
@@ -47,7 +55,9 @@ class PersonController extends Controller{
 
         $scripts[] = '../../js/person.js';
 
-        return view('index', compact('route', 'edit', 'scripts'));
+        $roles = $this->roles->all();
+
+        return view('admin.index', compact('route', 'edit', 'scripts', 'roles'));
     }
 
     public function edit($id)
@@ -60,8 +70,10 @@ class PersonController extends Controller{
 
         $person = $this->repository->findByField('id', $id)->first();
 
+        $roles = $this->roles->all();
+
         if($person)
-            return view('index', compact('route', 'edit', 'person', 'scripts'));
+            return view('admin.index', compact('route', 'edit', 'person', 'scripts', 'roles'));
 
         return abort(404);
     }
@@ -144,9 +156,10 @@ class PersonController extends Controller{
             $u['name'] = $data['name'];
             $u['email'] = $data['email'];
 
-            $user = $this->repository->findByField('id', $id)->first()->user->id;
+            $user = $this->users->findByField('person_id', $id)->first();
 
-            $this->users->update($u, $user);
+            if($user)
+                $this->users->update($u, $user->id);
 
             DB::commit();
 
@@ -205,7 +218,7 @@ class PersonController extends Controller{
 
         $scripts[] = '../../js/person.js';
 
-        return view('index', compact('people', 'route', 'scripts'));
+        return view('admin.index', compact('people', 'route', 'scripts'));
     }
 
     public function activate($id)

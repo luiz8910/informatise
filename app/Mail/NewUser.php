@@ -34,8 +34,8 @@ class NewUser extends Mailable
     public function build()
     {
         return $this
-            ->from('suporte@itapesegdistribuidora.com.br')
-            ->subject('Seu dados de acesso da Itapeseg')
+            ->from('suporte@'.env('MAIL_URL'))
+            ->subject('Seu dados de acesso da '.env('APP_NAME'))
             ->view('emails.new_user');
     }
 }

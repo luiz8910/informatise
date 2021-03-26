@@ -30,7 +30,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers, Config, Login;
+    use AuthenticatesUsers, Login, Config;
 
     /**
      * Where to redirect users after login.
@@ -58,7 +58,6 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
-
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
@@ -76,10 +75,11 @@ class LoginController extends Controller
                 'status' => 1
             ])->first();
 
-        //dd($user);
+
 
         if($user)
-            if ($this->attemptLogin($request)) {
+            //if (Hash::check($request->get('password'), $user->password)) {
+            if ($this->attemptLogin($request)){
                 return $this->sendLoginResponse($request);
             }
 

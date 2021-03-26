@@ -28,18 +28,13 @@ class ContactController extends Controller
      * @var CompanyDataRepository
      */
     private $data;
-    /**
-     * @var NewsletterRepository
-     */
-    private $newsletter;
 
-    public function __construct(ContactRepository $repository, UserRepository $users, CompanyDataRepository $data,
-                                NewsletterRepository $newsletter)
+
+    public function __construct(ContactRepository $repository, UserRepository $users, CompanyDataRepository $data)
     {
         $this->repository = $repository;
         $this->users = $users;
         $this->data = $data;
-        $this->newsletter = $newsletter;
     }
 
     public function index()
@@ -48,7 +43,7 @@ class ContactController extends Controller
 
         $route = 'contact.index';
 
-        return view('index', compact('route', 'contacts'));
+        return view('admin.index', compact('route', 'contacts'));
     }
 
     public function store(Request $request)
@@ -97,7 +92,7 @@ class ContactController extends Controller
 
         $data = $this->data->findByField('id', 1)->first();
 
-        return view('index', compact('data', 'route', 'scripts', 'links'));
+        return view('admin.index', compact('data', 'route', 'scripts', 'links'));
     }
 
     public function company_data_update(Request $request)
@@ -131,13 +126,13 @@ class ContactController extends Controller
         return redirect()->back();
     }
 
-    public function newsletters()
+    /*public function newsletters()
     {
         $news = $this->newsletter->orderBy('created_at', 'desc')->all();
 
         $route = 'contact.newsletter';
 
-        return view('index', compact('route', 'news'));
+        return view('admin.index', compact('route', 'news'));
     }
 
     public function newsletter_store(Request $request)
@@ -170,5 +165,5 @@ class ContactController extends Controller
 
             return json_encode(['status' => false, 'msg' => 'Um erro ocorreu, tente novamente mais tarde']);
         }
-    }
+    }*/
 }

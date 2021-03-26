@@ -98,6 +98,17 @@ function logout()
     $("#logout").submit();
 }
 
+function resize_options_buttons()
+{
+    $(".btn-inactive").css('display', 'inline-block');
+
+    $(".form-options")
+        .css('width', '300px')
+        .css('margin-left', '79%')
+        .css('float', 'left');
+
+}
+
 //Generic Ajax Request / Requisição ajax genérica
 function sweet_alert($data, $ajax) {
     swal({
@@ -159,7 +170,6 @@ function sweet_alert($data, $ajax) {
         return false;
     });
 
-
 }
 
 function preview_file(input)
@@ -183,4 +193,70 @@ function upload_view()
 {
     event.preventDefault();
     $("#file").trigger('click');
+}
+
+function getWidth() {
+    if (self.innerWidth) {
+        return self.innerWidth;
+    }
+
+    if (document.documentElement && document.documentElement.clientWidth) {
+        return document.documentElement.clientWidth;
+    }
+
+    if (document.body) {
+        return document.body.clientWidth;
+    }
+}
+
+function getHeight() {
+    if (self.innerHeight) {
+        return self.innerHeight;
+    }
+
+    if (document.documentElement && document.documentElement.clientHeight) {
+        return document.documentElement.clientHeight;
+    }
+
+    if (document.body) {
+        return document.body.clientHeight;
+    }
+}
+
+function isMobile()
+{
+
+    if(getWidth() < 576)
+    {
+        var width = getWidth() / 2;
+
+        $(".logomarca")
+            .css('margin-left', '20px')
+            .css('width', width + 'px');
+
+        $('.logo_site')
+            .css('margin-left', '80px')
+            .css('width', '60px');
+
+        $('.social-link')
+            .css('float', 'left');
+
+        $('.top-left')
+            .css('display', 'none');
+
+        $('#text-login')
+            .css('float', 'left')
+            .css('width', '0px');
+
+        $('.title').css('font-size','13px')
+
+        if(getWidth() > 400)
+            $('#text-login')
+                .css('margin-left', '30px');
+    }
+}
+
+function add_model($model)
+{
+    location.href = '/' + $model;
 }

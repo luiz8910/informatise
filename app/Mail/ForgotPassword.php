@@ -34,7 +34,7 @@ class ForgotPassword extends Mailable
     {
         return $this
             ->subject('Recuperação de senha')
-            ->from('contato@itapesegdistribuidora.com.br')
+            ->from('contato@'.env('MAIL_URL'))
             ->view('emails.forgot_password');
     }
 }

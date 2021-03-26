@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Repair Pro || Responsive HTML 5 Template</title>
+    <title>{{ env('APP_NAME') }}</title>
     <!-- Stylesheets -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/revolution-slider.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
     <!--Favicon-->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/logo_site.png" type="image/x-icon">
+    <link rel="icon" href="images/logo_site.png" type="image/x-icon">
 
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link href="css/responsive.css" rel="stylesheet">
+    <script src="js/fontawesome.js"></script>
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
@@ -35,13 +36,14 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="top-left">
-                            <div class="text">Bem vindo a Informatise</div>
+                            <div class="text">Bem vindo a {{ env('APP_NAME') }}</div>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="top-right clearfix">
-                            <div class="text">
-                                <a href="#">Login</a>
+                            <div class="text" >
+                                <a href="{{ route('login') }}" id="text-login">Login</a>
+                                <br>
                             </div>
                             <ul class="social-link">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -60,8 +62,8 @@
             <div class="container">
                 <div class="logo">
                     <a href="javascript:">
-                        <img src="images/logo_site.png" style="width: 70px;" alt="">
-                        <img src="images/logomarca.png" style="width: 350px;" alt="">
+                        <img src="images/logo_site.png" style="width: 70px;" class="logo_site" alt="">
+                        <img src="images/logomarca.png" style="width: 350px;" class="logomarca" alt="">
                     </a>
                 </div>
                 <div class="single-info-box">
@@ -1046,7 +1048,7 @@
                 </div>
             </div>
             <div class="footer-bottom text-center">
-                <div class="text"><span>RepairPro</span> © copy  2017 All Right Reserved</div>
+                <div class="text"><span>{{ env('APP_NAME') }}</span> © {{ date_format(date_create(), 'Y') }} Todos os direitos reservados</div>
             </div>
         </div>
     </footer>
@@ -1061,11 +1063,6 @@
 
 <!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target=".main-header"><span class="icon fa fa-long-arrow-up"></span></div>
-
-
-
-
-
 
 
 
@@ -1109,7 +1106,12 @@
 <!-- Theme js _________ -->
 <script type="text/javascript" src="js/theme.js"></script>
 <script src="js/map-script.js"></script>
+
+<script src="js/common.js"></script>
 <!-- End of .page_wrapper -->
 
+<script>
+    isMobile();
+</script>
 </body>
 </html>

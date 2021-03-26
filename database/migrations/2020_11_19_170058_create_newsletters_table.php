@@ -2,11 +2,12 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 /**
- * Class CreateUsersTable.
+ * Class CreateNewslettersTable.
  */
-class CreateUsersTable extends Migration
+class CreateNewslettersTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -15,9 +16,10 @@ class CreateUsersTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('users', function(Blueprint $table) {
+		Schema::create('newsletters', function(Blueprint $table) {
             $table->increments('id');
-
+            $table->string('name');
+            $table->string('email');
             $table->timestamps();
 		});
 	}
@@ -29,6 +31,6 @@ class CreateUsersTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('users');
+		Schema::drop('newsletters');
 	}
 }

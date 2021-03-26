@@ -120,7 +120,6 @@ Route::get("/send_link/{email}", 'Auth\LoginController@send_link_reset_pass');
 
 Route::get('/nova_senha/{token}', 'Auth\LoginController@new_password_view')->name('new.password.view');
 
-
 Route::post('/nova_senha/{token}', 'Auth\LoginController@new_password')->name('new.password');
 
 Route::get('teste_email', function (){

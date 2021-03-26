@@ -2,3 +2,18 @@
     width: 19px;
     margin-right: 7px;
 }
+
+.btn-list{
+    width: 150px;
+    height: 50px;
+    margin-bottom: 30px;
+    font-size: 17px;
+    font-family: Roboto, Arial, sans-serif;
+    padding: 7px;
+}
+
+/*X-Small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+
+}
+

@@ -32,7 +32,7 @@ class Newsletter extends Mailable
     {
         return $this
             ->subject('Newsletter do Site')
-            ->from('contato@itapesegdistribuidora.com.br')
+            ->from('contato@'.env('MAIL_URL'))
             ->view('emails.newsletter');
     }
 }

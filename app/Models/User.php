@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
@@ -16,7 +15,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  */
 class User extends Authenticatable implements Transformable
 {
-    use TransformableTrait, Notifiable, SoftDeletes;
+    use TransformableTrait, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +23,7 @@ class User extends Authenticatable implements Transformable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'person_id', 'status', 'active'
+        'name', 'email', 'password', 'person_id', 'status', 'active', 'person_id'
     ];
 
     /**
@@ -51,5 +50,4 @@ class User extends Authenticatable implements Transformable
     {
         return $this->belongsTo(Person::class);
     }
-
 }

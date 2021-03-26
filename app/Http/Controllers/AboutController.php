@@ -32,7 +32,7 @@ class AboutController extends Controller
 
         $about = $this->repository->findByField('id', 1)->first();
 
-        return view('index', compact('route', 'scripts', 'links', 'about'));
+        return view('admin.index', compact('route', 'scripts', 'links', 'about'));
     }
 
     public function update(Request $request)

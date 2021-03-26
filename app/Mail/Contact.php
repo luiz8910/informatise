@@ -32,7 +32,7 @@ class Contact extends Mailable
     {
         return $this
             ->subject('Contato do Site')
-            ->from('contato@itapesegdistribuidora.com.br')
+            ->from('contato@'. env('MAIL_URL'))
             ->view('emails.contact');
     }
 }

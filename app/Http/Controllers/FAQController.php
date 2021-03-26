@@ -26,7 +26,7 @@ class FAQController extends Controller
 
         $faq = $this->repository->orderBy('order')->findByField('active', 1);
 
-        return view('index', compact('route', 'faq', 'scripts'));
+        return view('admin.index', compact('route', 'faq', 'scripts'));
     }
 
     public function create()
@@ -52,7 +52,7 @@ class FAQController extends Controller
             $next_order = $faq[count($faq ) - 1]->order + 1;
 
 
-        return view('index', compact('route', 'scripts', 'links', 'edit', 'next_order'));
+        return view('admin.index', compact('route', 'scripts', 'links', 'edit', 'next_order'));
 
     }
 
@@ -73,7 +73,7 @@ class FAQController extends Controller
         $faq = $this->repository->findByField('id', $id)->first();
 
         if($faq)
-            return view('index', compact('route', 'scripts', 'links', 'faq', 'edit'));
+            return view('admin.index', compact('route', 'scripts', 'links', 'faq', 'edit'));
 
         return abort(404);
     }

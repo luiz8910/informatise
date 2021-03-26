@@ -30,7 +30,7 @@ class PasswordChanged extends Mailable
     {
         return $this
             ->subject('Sua senha foi alterada')
-            ->from('contato@itapesegdistribuidora.com.br')
+            ->from('contato@'.env('MAIL_URL'))
             ->view('emails.password_changed');
     }
 }
