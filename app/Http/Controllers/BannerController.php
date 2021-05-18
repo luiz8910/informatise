@@ -56,6 +56,8 @@ class BannerController extends Controller
 
         $banner = $this->repository->findByField('id', $id)->first();
 
+        $scripts[] = '../../js/banner.js';
+
         if($banner)
             return view('admin.index', compact('route', 'scripts', 'banner', 'edit'));
 
@@ -65,6 +67,8 @@ class BannerController extends Controller
     public function store(Request $request, $redirect = null)
     {
         $data = $request->all();
+
+        //dd($data);
 
         if ($data['order'] == "") {
             $request->session()->flash('error.msg', 'Preencha o campo ordenação');
@@ -86,22 +90,24 @@ class BannerController extends Controller
             return false;
         }
 
+        $data['active'] = isset($data['active']) ? 1 : 0;
+
         DB::beginTransaction();
 
         try {
 
-            $faq = $this->repository->findWhere([
+            $banner = $this->repository->findWhere([
                 ['order', '>=', $data['order']],
-                'active' => 1
+                'active' => $data['active']
             ]);
 
             $i = 1;
 
-            foreach ($faq as $f)
+            foreach ($banner as $b)
             {
                 $x['order'] = $data['order'] + $i;
 
-                $this->repository->update($x, $f->id);
+                $this->repository->update($x, $b->id);
 
                 $i++;
             }
@@ -151,41 +157,39 @@ class BannerController extends Controller
 
             $data['picture'] = $path;
         }
-        else{
-            $request->session()->flash('error.msg', 'Faça o upload de uma imagem');
 
-            return false;
-        }
+
+        $data['active'] = isset($data['active']) ? 1 : 0;
 
         try {
 
-            $faq = $this->repository->findWhere([
+            $banner = $this->repository->findWhere([
                 ['order', '>=', $data['order']],
-                'active' => 1
+                'active' => $data['active']
             ]);
 
             $i = 1;
 
-            foreach ($faq as $f)
+            foreach ($banner as $b)
             {
                 $x['order'] = $data['order'] + $i;
 
-                $this->repository->update($x, $f->id);
+                $this->repository->update($x, $b->id);
 
                 $i++;
             }
 
             $this->repository->update($data, $id);
 
-            $faq = $this->repository->orderBy('order')->findByField('active', 1);
+            $banner = $this->repository->orderBy('order')->findByField('active', 1);
 
             $i = 1;
 
-            foreach ($faq as $f)
+            foreach ($banner as $b)
             {
                 $x['order'] = $i;
 
-                $this->repository->update($x, $f->id);
+                $this->repository->update($x, $b->id);
 
                 $i++;
             }

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../../css/common.css" type="text/css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../../assets/lib/summernote/summernote.css"/>
 </head>
 <body>
 <form action="{{ route('logout') }}" method="POST" id="logout">@csrf</form>
@@ -121,17 +122,11 @@
                                     <span>Informações da Empresa</span>
                                 </a>
                             </li>
-                            <li class="parent"><a href="charts.html"><i class="icon mdi mdi-chart-donut"></i><span>Charts</span></a>
-                                <ul class="sub-menu">
-                                    <li><a href="charts-flot.html">Flot</a>
-                                    </li>
-                                    <li><a href="charts-sparkline.html">Sparklines</a>
-                                    </li>
-                                    <li><a href="charts-chartjs.html">Chart.js</a>
-                                    </li>
-                                    <li><a href="charts-morris.html">Morris.js</a>
-                                    </li>
-                                </ul>
+                            <li class="">
+                                <a href="{{ route('banner.index') }}"><i class="icon mdi mdi-chart-donut"></i>
+                                    <span>Banner</span>
+                                </a>
+
                             </li>
                             <li class="parent"><a href="#"><i class="icon mdi mdi-dot-circle"></i><span>Forms</span></a>
                                 <ul class="sub-menu">
@@ -821,6 +816,13 @@
 <script src='//igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
+<!-- Summernote -->
+<script src="../../assets/lib/summernote/summernote.min.js" type="text/javascript"></script>
+<script src="../../assets/lib/summernote/summernote-ext-beagle.js" type="text/javascript"></script>
+<script src="../../assets/lib/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
+<script src="../../assets/lib/markdown-js/markdown.js" type="text/javascript"></script>
+<script src="../../assets/js/app-form-wysiwyg.js" type="text/javascript"></script>
+
 @if(isset($scripts))
     @foreach($scripts as $script)
         <script src="{{ $script }}" type="text/javascript"></script>
@@ -852,6 +854,7 @@
         //initialize the javascript
         App.init();
         App.dashboard();
+        App.textEditors();
         /*if($("#form").val() == 1)
             App.formElements();
 

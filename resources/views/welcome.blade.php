@@ -64,7 +64,7 @@
                 <div class="logo">
                     <a href="javascript:">
                         <img src="images/logo_site.png" style="width: 70px;" class="logo_site" alt="">
-                        <img src="images/logomarca.png" style="width: 350px;" class="logomarca" alt="">
+                        <img src="images/logomarca.png" style="width: 250px;" class="logomarca" alt="">
                     </a>
                 </div>
                 <div class="single-info-box">
@@ -79,14 +79,16 @@
                         <div class="single-info">
                             <div class="icon-box"><i class="flaticon-envelope"></i></div>
                             <div class="title">Email</div>
-                            <div class="text"><a href="{{ $data->email }}" style="color:#b48484;">{{ $data->email }}</a></div>
+                            <div class="text"><a href="mailto:{{ $data->email }}" style="color:#b48484;">{{ $data->email }}</a></div>
                         </div>
                     @endif
                     @if($data->whatsapp != "")
                         <div class="single-info">
                             <div class="icon-box"><i class='fa flaticon-technology'></i></div>
                             <div class="title">WhatsApp</div>
-                            <div class="text-phone">{{ $data->whatsapp }}</div>
+                            <div class="text-phone">
+                                <a href="https://wa.me/{{ $data->wa }}/">{{ $data->whatsapp }}</a>
+                            </div>
                         </div>
                     @endif
                 </div>
@@ -234,63 +236,66 @@
     <!--Main Slider-->
     <section class="main-banner banner">
         <div class="rev_slider_wrapper">
-            <div id="main_slider" class="rev_slider"  data-version="5.0">
+            <div id="main_slider" class="rev_slider" data-version="5.0">
 
                 <ul>
-                    <li data-index='rs-355' class="slide_show slide_1" data-transition='slidingoverlayright' data-slotamount='default' data-easein='default' data-easeout='default' data-masterspeed='default' data-rotate='0' data-saveperformance='off' data-title='Slide Boxes' data-description=''>
-                        <img src="images/slider-1.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
-                        <div class="main_heading tp-caption tp-resizeme"
-                             data-x="left" data-hoffset="0"
-                             data-y="center" data-voffset="-140"
-                             data-whitespace="nowrap"
-                             data-transform_idle="o:1;"
-                             data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;"
-                             data-transform_out="y:[100%];s:1000;s:1000;"
-                             data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                             data-start="2000"
-                             data-splitin="none"
-                             data-splitout="none">
-                            <div class="banner-title"><h2>Want to Repair</h2></div>
-                        </div>
-                        <div class="tp-caption tp-resizeme"
-                             data-x="left" data-hoffset="0"
-                             data-y="center" data-voffset="-80"
-                             data-transform_idle="o:1;"
-                             data-transform_in="x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;"
-                             data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
-                             data-splitin="none"
-                             data-splitout="none"
-                             data-responsive_offset="on"
-                             data-start="2300">
-                            <div class="banner-title"><h1>Laptop & Computer</h1></div>
-                        </div>
-                        <div class="tp-caption tp-resizeme"
-                             data-x="left" data-hoffset="0"
-                             data-y="center" data-voffset="10"
-                             data-transform_idle="o:1;"
-                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
-                             data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
-                             data-splitin="none"
-                             data-splitout="none"
-                             data-responsive_offset="on"
-                             data-start="2600">
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br /> tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam<br /> quis nostrud exercitation.</div>
-                        </div>
-                        <div class="tp-caption tp-resizeme"
-                             data-x="left" data-hoffset="0"
-                             data-y="center" data-voffset="100"
-                             data-transform_idle="o:1;"
-                             data-transform_in="y:[300%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
-                             data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
-                             data-splitin="none"
-                             data-splitout="none"
-                             data-responsive_offset="on"
-                             data-start="2600">
-                            <a class="btn-style-one" href="#">Purchase Now</a>
-                        </div>
-                    </li>
+                    @foreach($banners as $b)
+                        <li data-index='rs-{{ $b->id }}' class="slide_show" data-transition='slidingoverlayright' data-slotamount='default' data-easein='default' data-easeout='default' data-masterspeed='default' data-rotate='0' data-saveperformance='off' data-title='Slide Boxes' data-description=''>
+                            <img src="{{ $b->picture }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+                            <div class="main_heading tp-caption tp-resizeme"
+                                 data-x="left" data-hoffset="0"
+                                 data-y="center" data-voffset="-140"
+                                 data-whitespace="nowrap"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;"
+                                 data-transform_out="y:[100%];s:1000;s:1000;"
+                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                                 data-start="2000"
+                                 data-splitin="none"
+                                 data-splitout="none">
+                                <div class="banner-title"><h2>{{ $b->subtitle }}</h2></div>
+                            </div>
+                            <div class="tp-caption tp-resizeme"
+                                 data-x="left" data-hoffset="0"
+                                 data-y="center" data-voffset="-80"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on"
+                                 data-start="2300">
+                                <div class="banner-title"><h1>{{ $b->title }}</h1></div>
+                            </div>
+                            <div class="tp-caption tp-resizeme"
+                                 data-x="left" data-hoffset="0"
+                                 data-y="center" data-voffset="10"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on"
+                                 data-start="2600">
+                                <div class="text"><?php echo html_entity_decode($b->text, ENT_QUOTES, 'UTF-8'); ?></div>
+                            </div>
+<!--                            <div class="tp-caption tp-resizeme"
+                                 data-x="left" data-hoffset="0"
+                                 data-y="center" data-voffset="100"
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="y:[300%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                                 data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
+                                 data-splitin="none"
+                                 data-splitout="none"
+                                 data-responsive_offset="on"
+                                 data-start="2600">
+                                <a class="btn-style-one" href="#">Purchase Now</a>
+                            </div>-->
+                        </li>
+                    @endforeach
 
-                    <li data-index='rs-356' class="slide_show slide_2" data-transition='slidingoverlaytop' data-slotamount='default' data-easein='default' data-easeout='default' data-masterspeed='default' data-rotate='0' data-saveperformance='off' data-title='Slide Slots vertical' data-description=''>
+{{--
+                    <li data-index='rs-357' class="slide_show slide_2" data-transition='slidingoverlaytop' data-slotamount='default' data-easein='default' data-easeout='default' data-masterspeed='default' data-rotate='0' data-saveperformance='off' data-title='Slide Slots vertical' data-description=''>
 
                         <img src="images/slider-2.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
 
@@ -344,6 +349,7 @@
                             <a class="btn-style-one" href="#">Purchase Now</a>
                         </div>
                     </li>
+--}}
 
                 </ul>
             </div>

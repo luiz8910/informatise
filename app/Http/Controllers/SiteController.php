@@ -82,6 +82,12 @@ class SiteController extends Controller
 
         $data = $this->data->findByField('id', 1)->first();
 
+        if($data->whatsapp != "") {
+            $data->whatsapp = str_replace('(', '', $data->whatsapp);
+            $data->whatsapp = str_replace(')', '', $data->whatsapp);
+            $data->whatsapp = str_replace('+', '', $data->whatsapp);
+        }
+
         $banner = $this->banner->orderBy('order')->findByField('active', 1);
 
         return view('welcome', compact('menus', 'brands', 'segments', 'about', 'faq', 'data', 'banner'));

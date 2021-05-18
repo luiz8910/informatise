@@ -17,8 +17,11 @@
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th style="width:25%">Imagem</th>
+                                <th style="width:15%">Imagem</th>
                                 <th style="width:10%;">Ordem</th>
+                                <th style="width: 10%;">Titulo</th>
+                                <th style="width: 15%;">Subtitulo</th>
+                                <th style="width: 20%;">Texto</th>
                                 <th class="actions"></th>
                             </tr>
                             </thead>
@@ -31,6 +34,10 @@
                                         </a>
                                     </td>
                                     <td>{{ $b->order . 'º'}}</td>
+
+                                    <td>{{ $b->title }}</td>
+                                    <td>{{ $b->subtitle }}</td>
+                                    <td>{{ $b->text }}</td>
 
                                     <td class="actions">
                                         <a href="{{ route('banner.edit', ['id' => $b->id]) }}" class="icon">

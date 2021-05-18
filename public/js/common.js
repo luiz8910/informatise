@@ -174,7 +174,7 @@ function sweet_alert($data, $ajax) {
 
 function preview_file(input)
 {
-    var file = $("input[type=file]").get(0).files[0];
+    var file = $("#file").get(0).files[0];
 
     if(file){
         var reader = new FileReader();
@@ -182,7 +182,7 @@ function preview_file(input)
         reader.onload = function(){
             $("#preview_img").attr("src", reader.result).css('display', 'block');
             $("#upload").text('Trocar Imagem');
-            console.log($("#upload"));
+
         }
 
         reader.readAsDataURL(file);

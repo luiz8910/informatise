@@ -12,8 +12,17 @@
     padding: 7px;
 }
 
+@media (max-width: 990px) {
+    .div_editor{
+        margin-left: 12px;
+    }
+}
+
 /*X-Small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {
-
+    .div_editor{
+        margin-left: -20px;
+    }
 }
+
 
