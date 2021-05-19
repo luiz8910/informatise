@@ -260,3 +260,14 @@ function add_model($model)
 {
     location.href = '/' + $model;
 }
+
+function open_video()
+{
+    var url = $("#url").val();
+
+    if(url != "")
+        window.open(url, '_blank');
+
+    else
+        sweet_alert_error('Digite um link válido no campo "Link do vídeo"');
+}

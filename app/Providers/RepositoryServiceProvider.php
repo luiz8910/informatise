@@ -46,6 +46,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(NewsletterRepository::class, NewsletterRepositoryEloquent::class);
         $this->app->bind(BannerRepository::class, BannerRepositoryEloquent::class);
         $this->app->bind(\App\Repositories\RoleRepository::class, \App\Repositories\RoleRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\VideoRepository::class, \App\Repositories\VideoRepositoryEloquent::class);
         //:end-bindings:
     }
 }

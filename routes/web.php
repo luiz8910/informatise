@@ -103,6 +103,13 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::delete('/banner/{id}', 'BannerController@delete');
 
+//----------------------------------------------------------------------------------------------------------------------
+
+    //Video
+
+    Route::get('editar_video', 'VideoController@edit')->name('video.edit');
+
+    Route::put('editar_video', 'VideoController@update')->name('video.update');
 });
 
 

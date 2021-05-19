@@ -357,32 +357,32 @@
     </section>
     <!--Main Slider End-->
 
-    <!-- about section -->
-    <section class="about-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-12 col-xs-12">
-                    <div class="about-content">
-                        <div class="text">Welcome to</div>
-                        <div class="title">Our RepairPro</div>
-                        <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm tempor incididunt ut labore dolore magna aliqua enim ad </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmtempor incididunt ut labore et dolore magna aliqu enim ad minim veniam.</p>
-                        <div class="about-btn">
-                            <a href="#" class="btn-style-one">Contact Us</a>
-                            <a href="#" class="btn-style-two">Explore More</a>
+    @if($video->active)
+        <!-- about section -->
+        <section class="about-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="about-content">
+                            <div class="text">{{ $video->subtitle }}</div>
+                            <div class="title">{{ $video->title }}</div>
+                            <?php echo html_entity_decode($video->text, ENT_QUOTES, 'UTF-8'); ?>
+                            <div class="about-btn">
+                                <a href="#" class="btn-style-one">Entre em Contato</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="video-section">
+                            <div class="fluid-image"><img src="{{ $video->thumbnail }}" alt="">
+                                <a class="html5lightbox" title="Assurance Video Gallery" href="{{ $video->url }}"><span class="fa fa-play" aria-hidden="true"></span></a></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12 col-xs-12">
-                    <div class="video-section">
-                        <div class="fluid-image"><img src="images/video-img.png" alt="">
-                            <a class="html5lightbox" title="Assurance Video Gallery" href="https://www.youtube.com/watch?v=QzNyz8b48Zg"><span class="fa fa-play" aria-hidden="true"></span></a></div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
-    <!-- about section end -->
+        </section>
+        <!-- about section end -->
+    @endif
 
     <!-- service section -->
     <section class="service-section text-center">
