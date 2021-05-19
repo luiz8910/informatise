@@ -110,6 +110,22 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('editar_video', 'VideoController@edit')->name('video.edit');
 
     Route::put('editar_video', 'VideoController@update')->name('video.update');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+    //Banners
+
+    Route::get('/servicos/{filter?}', 'ServiceController@index')->name('services.index');
+
+    Route::get('/criar_servico', 'ServiceController@create')->name('services.create');
+
+    Route::get('/servico/{id}', 'ServiceController@edit')->name('services.edit');
+
+    Route::post('/servico', 'ServiceController@store')->name('services.store');
+
+    Route::put('/servico/{id}', 'ServiceController@update')->name('services.update');
+
+    Route::delete('/servico/{id}', 'ServiceController@delete');
 });
 
 

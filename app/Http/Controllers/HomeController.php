@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\BannerRepository;
 use App\Repositories\CompanyDataRepository;
+use App\Repositories\ServiceRepository;
 use App\Repositories\VideoRepository;
 use Illuminate\Http\Request;
 
@@ -21,18 +22,24 @@ class HomeController extends Controller
      * @var VideoRepository
      */
     private $video;
+    /**
+     * @var ServiceRepository
+     */
+    private $service;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(CompanyDataRepository $company, BannerRepository $banner, VideoRepository $video)
+    public function __construct(CompanyDataRepository $company, BannerRepository $banner, VideoRepository $video,
+                        ServiceRepository $service)
     {
         //$this->middleware('auth');
         $this->company = $company;
         $this->banner = $banner;
         $this->video = $video;
+        $this->service = $service;
     }
 
     /**
@@ -63,6 +70,13 @@ class HomeController extends Controller
 
         $video->thumbnail = str_replace('public', '/storage', $video->thumbnail);
 
-        return view('welcome', compact('data', 'banners', 'video'));
+        $services = $this->service->orderBy('order')->findByField('active', 1);
+
+        foreach ($services as $service)
+            $service->picture = str_replace('public', '/storage', $service->picture);
+
+        $col_size_services = 12 / count($services);
+
+        return view('welcome', compact('data', 'banners', 'video', 'services', 'col_size_services'));
     }
 }

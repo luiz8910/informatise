@@ -373,10 +373,12 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12">
-                        <div class="video-section">
-                            <div class="fluid-image"><img src="{{ $video->thumbnail }}" alt="">
-                                <a class="html5lightbox" title="Assurance Video Gallery" href="{{ $video->url }}"><span class="fa fa-play" aria-hidden="true"></span></a></div>
-                        </div>
+                        @if($video->url != "")
+                            <div class="video-section">
+                                <div class="fluid-image"><img src="{{ $video->thumbnail }}" alt="">
+                                    <a class="html5lightbox" title="Assurance Video Gallery" href="{{ $video->url }}"><span class="fa fa-play" aria-hidden="true"></span></a></div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -388,29 +390,32 @@
     <section class="service-section text-center">
         <div class="container">
             <div class="service-title">
-                <div class="section-title">Our Services</div>
+                <div class="section-title">Nossos Serviços</div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single-item">
-                        <div class="inner-box">
-                            <div class="img-box">
-                                <img src="images/1.jpg" alt="">
-                            </div>
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
+
+                @foreach($services as $s)
+                    <div class="col-md-{{ $col_size_services }} col-sm-6 col-xs-12">
+                        <div class="single-item">
+                            <div class="inner-box">
+                                <div class="img-box">
+                                    <img src="{{ $s->picture }}" alt="">
+                                </div>
+                                <div class="overlay-box">
+                                    <div class="overlay-inner">
+                                    </div>
+                                </div>
+                                <div class="img-content">
+                                    <?php echo html_entity_decode($s->text, ENT_QUOTES, 'UTF-8'); ?>
+                                    <!--<a href="service-detail.html" class="img-btn">Read More</a>-->
                                 </div>
                             </div>
-                            <div class="img-content">
-                                <p>Lorem ipsum dolor sit amet, consecte
-                                    tur adipisicing elit, sed do eiusmtempor inciddunt ut labore.</p>
-                                <a href="service-detail.html" class="img-btn">Read More</a>
-                            </div>
+                            <div class="img-title"><a href="javascript:">{{ $s->name }}</a></div>
                         </div>
-                        <div class="img-title"><a href="service-detail.html">Smart Phone Repair</a></div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
+                @endforeach
+
+<!--                <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-item">
                         <div class="inner-box">
                             <div class="img-box">
@@ -447,7 +452,7 @@
                         </div>
                         <div class="img-title"><a href="service-detail.html">Mac & PC Repair</a></div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>

@@ -135,13 +135,11 @@
                                 </a>
 
                             </li>
-                            <li class="parent"><a href="#"><i class="icon mdi mdi-border-all"></i><span>Tables</span></a>
-                                <ul class="sub-menu">
-                                    <li><a href="tables-general.html">General</a>
-                                    </li>
-                                    <li><a href="tables-datatables.html">Data Tables</a>
-                                    </li>
-                                </ul>
+                            <li class="">
+                                <a href="{{ route('services.index') }}">
+                                    <i class="fas fa-clipboard-list" style="margin-right: 10px;"></i>
+                                    <span>Serviços</span>
+                                </a>
                             </li>
                             <li class="parent"><a href="#"><i class="icon mdi mdi-layers"></i><span>Pages</span></a>
                                 <ul class="sub-menu">
