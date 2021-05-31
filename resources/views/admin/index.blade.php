@@ -141,6 +141,12 @@
                                     <span>Serviços</span>
                                 </a>
                             </li>
+                            <li class="">
+                                <a href="{{ route('categories.index') }}">
+                                    <i class="fas fa-clipboard-list" style="margin-right: 10px;"></i>
+                                    <span>Categorias</span>
+                                </a>
+                            </li>
                             <li class="parent"><a href="#"><i class="icon mdi mdi-layers"></i><span>Pages</span></a>
                                 <ul class="sub-menu">
                                     <li><a href="pages-blank.html">Blank Page</a>

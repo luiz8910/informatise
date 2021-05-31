@@ -12,6 +12,11 @@
     padding: 7px;
 }
 
+.icon-custom{
+    font-size: 35px;
+    padding: 10px;
+}
+
 @media (max-width: 990px) {
     .div_editor{
         margin-left: 12px;

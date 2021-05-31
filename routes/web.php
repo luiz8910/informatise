@@ -113,7 +113,7 @@ Route::group(['middleware' => 'auth'], function (){
 
 //----------------------------------------------------------------------------------------------------------------------
 
-    //Banners
+    //Serviços
 
     Route::get('/servicos/{filter?}', 'ServiceController@index')->name('services.index');
 
@@ -126,6 +126,23 @@ Route::group(['middleware' => 'auth'], function (){
     Route::put('/servico/{id}', 'ServiceController@update')->name('services.update');
 
     Route::delete('/servico/{id}', 'ServiceController@delete');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+    //Categorias
+
+    Route::get('/categorias/{filter?}', 'CategoryController@index')->name('categories.index');
+
+    Route::get('/criar_categoria', 'CategoryController@create')->name('categories.create');
+
+    Route::get('/categoria/{id}', 'CategoryController@edit')->name('categories.edit');
+
+    Route::post('/categoria', 'CategoryController@store')->name('categories.store');
+
+    Route::put('/categoria/{id}', 'CategoryController@update')->name('categories.update');
+
+    Route::delete('/categoria/{id}', 'CategoryController@delete');
+
 });
 
 
